@@ -3,13 +3,16 @@ import { render as rtlRender } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 // Import your own reducer
-import userReducer from "../features/message/messagesSlice";
+import messagesReducer from "../features/message/messagesSlice";
 
 function render(
   ui,
   {
     preloadedState,
-    store = configureStore({ reducer: { user: userReducer }, preloadedState }),
+    store = configureStore({
+      reducer: { messages: messagesReducer },
+      preloadedState,
+    }),
     ...renderOptions
   } = {}
 ) {

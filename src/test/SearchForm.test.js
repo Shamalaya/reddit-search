@@ -9,7 +9,7 @@ describe("Search Form", () => {
 
     const button = screen.getByRole("button", { name: /search/i });
 
-    await waitFor(() => userEvent.click(button));
+    userEvent.click(button);
 
     const errorMessage = await screen.findByText(/Required/i);
     expect(errorMessage).toBeInTheDocument();
@@ -19,8 +19,8 @@ describe("Search Form", () => {
 
     const button = screen.getByRole("button", { name: /search/i });
     const usernameTextbox = screen.getByRole("textbox", { name: /username/i });
-    await waitFor(() => userEvent.type(usernameTextbox, "aa"));
-    await waitFor(() => userEvent.click(button));
+    userEvent.type(usernameTextbox, "aa");
+    userEvent.click(button);
     const errorMessage = await screen.findByText(
       /must be between 3 and 20 characters/i
     );
@@ -33,8 +33,8 @@ describe("Search Form", () => {
     const subredditTextbox = screen.getByRole("textbox", {
       name: /subreddit/i,
     });
-    await waitFor(() => userEvent.type(subredditTextbox, "aa"));
-    await waitFor(() => userEvent.click(button));
+    userEvent.type(subredditTextbox, "aa");
+    userEvent.click(button);
     const errorMessage = await screen.findByText(
       /must be between 3 and 20 characters/i
     );
@@ -46,10 +46,10 @@ describe("Search Form", () => {
 
     const button = screen.getByRole("button", { name: /search/i });
     const usernameTextbox = screen.getByRole("textbox", { name: /username/i });
-    await waitFor(() =>
-      userEvent.type(usernameTextbox, "aaaaaaaaaaaaaaaaaaaaa")
-    );
-    await waitFor(() => userEvent.click(button));
+
+    userEvent.type(usernameTextbox, "aaaaaaaaaaaaaaaaaaaaa");
+
+    userEvent.click(button);
     const errorMessage = await screen.findByText(
       /must be between 3 and 20 characters/i
     );
@@ -63,10 +63,9 @@ describe("Search Form", () => {
     const subredditTextbox = screen.getByRole("textbox", {
       name: /subreddit/i,
     });
-    await waitFor(() =>
-      userEvent.type(subredditTextbox, "aaaaaaaaaaaaaaaaaaaaa")
-    );
-    await waitFor(() => userEvent.click(button));
+
+    userEvent.type(subredditTextbox, "aaaaaaaaaaaaaaaaaaaaa");
+    userEvent.click(button);
     const errorMessage = await screen.findByText(
       /must be between 3 and 20 characters/i
     );
