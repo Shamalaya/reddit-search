@@ -53,17 +53,20 @@ const SearchForm = () => {
               type="text"
               aria-label="subreddit"
             />
-
-            <Field as="select" name="color">
-              <option value="red">Red</option>
-
-              <option value="green">Green</option>
-
-              <option value="blue">Blue</option>
+          </div>
+          <div className="form-group mb-3">
+            <label htmlFor="items-number">Number of comments</label>
+            <Field as="select" name="items-number" aria-label="items-number">
+              <option value="20">20</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="500">500</option>
             </Field>
 
             <ErrorMessage name="subreddit" />
           </div>
+
           <button type="submit" className="btn btn-primary">
             Search
           </button>
