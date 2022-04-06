@@ -1,5 +1,5 @@
 import SearchForm from "../components/SearchForm";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "../test-utils/testing-library-utils";
 import React from "react";
 import userEvent from "@testing-library/user-event";
 

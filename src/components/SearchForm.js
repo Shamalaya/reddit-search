@@ -2,26 +2,26 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { fetchMessages } from "../features/message/messagesSlice";
+import { useDispatch } from "react-redux";
 const SearchForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
-      initialValues={{ username: "", subreddit: "" }}
+      initialValues={{ username: "", subreddit: "", size: "20" }}
       validationSchema={Yup.object({
         username: Yup.string()
           .max(20, "Must be between 3 and 20 characters")
           .min(3, "Must be between 3 and 20 characters")
           .required("Required"),
         subreddit: Yup.string()
-          .max(3, "Must be between 3 and 20 characters")
+          .max(20, "Must be between 3 and 20 characters")
           .min(3, "Must be between 3 and 20 characters"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-
-          setSubmitting(false);
-        }, 400);
+      onSubmit={(values, actions) => {
+        dispatch(fetchMessages(values));
+        actions.setSubmitting(false);
       }}
     >
       {(formik) => (
@@ -41,7 +41,7 @@ const SearchForm = () => {
             <ErrorMessage name="username" />
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="subreddit">Subreddit</label>
+            <label htmlFor="subreddit">Subreddit r/</label>
 
             <Field
               name="subreddit"
@@ -55,8 +55,8 @@ const SearchForm = () => {
             />
           </div>
           <div className="form-group mb-3">
-            <label htmlFor="items-number">Number of comments</label>
-            <Field as="select" name="items-number" aria-label="items-number">
+            <label htmlFor="size">Number of comments</label>
+            <Field as="select" name="size" aria-label="size">
               <option value="20">20</option>
               <option value="50">50</option>
               <option value="100">100</option>
