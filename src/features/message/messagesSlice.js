@@ -2,8 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getMessages } from "../../API";
 
 const initialState = {
-  messages: [],
+  data: [],
   isLoading: false,
+  isError: false,
 };
 
 export const fetchMessages = createAsyncThunk(
@@ -21,12 +22,12 @@ const messagesSlice = createSlice({
       state.isLoading = true;
     },
     [fetchMessages.fulfilled]: (state, action) => {
-      console.log(action);
       state.isLoading = false;
-      state.messages = action.payload;
+      state.data = action.payload.data;
     },
-    [fetchMessages.pending]: (state) => {
+    [fetchMessages.rejected]: (state) => {
       state.isLoading = false;
+      state.isError = true;
     },
   },
 });
