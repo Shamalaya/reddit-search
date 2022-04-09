@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.subreddit {
+  font-size: 0.8rem;
+  color: orangered !important
+}
+
 a:link {
   text-decoration: none;
   color: black
@@ -32,12 +37,20 @@ a:active {
 
 .score-positive {
   color: green;
+  font-size: 0.8rem;
 }
 
 .score-negative {
   color: red;
+  font-size: 0.8rem;
+
 }
 
 .score-positive:before {
   content: "+";
+
+}
+
+.date {
+  font-size: 0.8rem;
 }

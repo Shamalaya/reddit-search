@@ -1,7 +1,7 @@
-const url = "https://api.pushshift.io/reddit/search/comment/";
+const url = "https://api.pushshift.io/reddit/search/";
 
-export const getMessages = ({ username, subreddit, size }) => {
-  const params = `?author=${username}&subreddit=${subreddit}&size=${size}`;
+export const getMessages = ({ username, subreddit, type, size }) => {
+  const params = `${type}?author=${username}&subreddit=${subreddit}&size=${size}`;
 
   return fetch(url + params)
     .then((resp) => {

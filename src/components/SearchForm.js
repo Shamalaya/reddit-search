@@ -9,7 +9,7 @@ const SearchForm = () => {
 
   return (
     <Formik
-      initialValues={{ username: "", subreddit: "", size: "20" }}
+      initialValues={{ username: "", subreddit: "", type: "", size: "20" }}
       validationSchema={Yup.object({
         username: Yup.string()
           .max(20, "Must be between 3 and 20 characters")
@@ -53,7 +53,17 @@ const SearchForm = () => {
               type="text"
               aria-label="subreddit"
             />
+            <ErrorMessage name="subreddit" />
           </div>
+
+          <div className="form-group mb-3">
+            <label htmlFor="type">Search for</label>
+            <Field as="select" name="type" aria-label="search type">
+              <option value="comment">Comments</option>
+              <option value="submission">Submissions</option>
+            </Field>
+          </div>
+
           <div className="form-group mb-3">
             <label htmlFor="size">Number of comments</label>
             <Field as="select" name="size" aria-label="size">
@@ -63,8 +73,6 @@ const SearchForm = () => {
               <option value="200">200</option>
               <option value="500">500</option>
             </Field>
-
-            <ErrorMessage name="subreddit" />
           </div>
 
           <button type="submit" className="btn btn-primary">

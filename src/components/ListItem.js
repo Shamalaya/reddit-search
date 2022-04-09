@@ -3,7 +3,7 @@ import { ListGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
 import moment from "moment";
 
-function ListItem({ body, subreddit, created_utc, permalink, score }) {
+function ListItem({ body, subreddit, created_utc, title, permalink, score }) {
   return (
     <ListGroup.Item>
       <div className="d-flex flex-row">
@@ -12,15 +12,22 @@ function ListItem({ body, subreddit, created_utc, permalink, score }) {
           target="_blank"
           rel="noreferrer"
           aria-label="Reddit"
+          className="subreddit"
         >
           r/{subreddit}
         </a>
         <div
-          className={score > 0 ? "ms-3 score-positive" : "ms-3 score-negative"}
+          className={
+            title
+              ? null
+              : score > 0
+              ? "ms-3 score-positive"
+              : "ms-3 score-negative"
+          }
         >
-          {score}
+          {title ? null : score}
         </div>
-        <div className="ms-auto">
+        <div className="ms-auto date">
           {moment.unix(created_utc).format("DD/MM/YYYY, HH:mm:ss ")}
         </div>
       </div>
@@ -32,7 +39,7 @@ function ListItem({ body, subreddit, created_utc, permalink, score }) {
           rel="noreferrer"
           aria-label="Reddit"
         >
-          {body}
+          {title ? title : body}
         </a>
       </div>
     </ListGroup.Item>
@@ -45,6 +52,7 @@ ListItem.propTypes = {
   created_utc: PropTypes.number,
   permalink: PropTypes.string,
   score: PropTypes.number,
+  title: PropTypes.string,
 };
 
 export default ListItem;
