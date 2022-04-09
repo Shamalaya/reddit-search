@@ -6,11 +6,14 @@ function CommentList() {
   const messages = useSelector((store) => store.messages.data);
 
   return (
-    <ListGroup>
-      {messages.map((el) => {
-        return <ListItem key={el.id} {...el} />;
-      })}
-    </ListGroup>
+    <>
+      <p>{messages.length} results </p>
+      <ListGroup>
+        {messages.map((el) => {
+          return <ListItem key={el.id} {...el} />;
+        })}
+      </ListGroup>
+    </>
   );
 }
 

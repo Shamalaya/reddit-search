@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getMessages } from "../../API";
 
 const initialState = {
-  data: [],
+  data: null,
   isLoading: false,
   isError: false,
 };

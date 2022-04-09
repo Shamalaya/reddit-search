@@ -11,7 +11,7 @@ function App() {
   return (
     <Container>
       <SearchForm />
-      <CommentList />
+      {messages && <CommentList />}
     </Container>
   );
 }
