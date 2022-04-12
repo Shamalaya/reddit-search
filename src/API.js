@@ -1,7 +1,20 @@
 const url = "https://api.pushshift.io/reddit/search/";
 
-export const getMessages = ({ username, subreddit, type, size }) => {
-  const params = `${type}?author=${username}&subreddit=${subreddit}&size=${size}`;
+export const getMessages = ({
+  username,
+  subreddit,
+  type,
+  size,
+  after,
+  before,
+}) => {
+  if (after !== "") {
+    after = Date.parse(after) / 1000;
+  }
+  if (before !== "") {
+    before = Date.parse(before) / 1000;
+  }
+  const params = `${type}?author=${username}&subreddit=${subreddit}&size=${size}&after=${after}&before=${before}`;
 
   return fetch(url + params)
     .then((resp) => {

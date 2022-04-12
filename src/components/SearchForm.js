@@ -4,12 +4,20 @@ import * as Yup from "yup";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchMessages } from "../features/message/messagesSlice";
 import { useDispatch } from "react-redux";
+
 const SearchForm = () => {
   const dispatch = useDispatch();
 
   return (
     <Formik
-      initialValues={{ username: "", subreddit: "", type: "", size: "20" }}
+      initialValues={{
+        username: "",
+        subreddit: "",
+        type: "",
+        size: "20",
+        after: "",
+        before: "",
+      }}
       validationSchema={Yup.object({
         username: Yup.string()
           .max(20, "Must be between 3 and 20 characters")
@@ -73,6 +81,14 @@ const SearchForm = () => {
               <option value="200">200</option>
               <option value="500">500</option>
             </Field>
+          </div>
+          <div className="form-group mb-3">
+            <label htmlFor="after">After</label>
+            <Field type="datetime-local" name="after" aria-label="After" />
+          </div>
+          <div className="form-group mb-3">
+            <label htmlFor="before">Before</label>
+            <Field type="datetime-local" name="before" aria-label="Before" />
           </div>
 
           <button type="submit" className="btn btn-primary">
