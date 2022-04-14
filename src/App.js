@@ -4,13 +4,15 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import CommentList from "./components/CommentList";
 import { useSelector } from "react-redux";
-
+import Error from "./components/Error";
 function App() {
   const messages = useSelector((store) => store.messages.data);
-  console.log(messages);
+  const isError = useSelector((store) => store.messages.isError);
+
   return (
     <Container>
       <SearchForm />
+      {isError ? <Error /> : null}
       {messages && <CommentList />}
     </Container>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
 import PropTypes from "prop-types";
-import moment from "moment";
+import dayjs from "dayjs";
 
 function ListItem({ body, subreddit, created_utc, title, permalink, score }) {
   return (
@@ -28,7 +28,7 @@ function ListItem({ body, subreddit, created_utc, title, permalink, score }) {
           {title ? null : score}
         </div>
         <div className="ms-auto date">
-          {moment.unix(created_utc).format("DD/MM/YYYY, HH:mm:ss ")}
+          {dayjs.unix(created_utc).format("DD/MM/YYYY, HH:mm:ss ")}
         </div>
       </div>
       <div>
