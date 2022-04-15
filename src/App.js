@@ -11,6 +11,7 @@ function App() {
 
   return (
     <Container>
+      <h1 className="text-center mt-5 mb-5 display-2 ">REDDIT SEARCH</h1>
       <SearchForm />
       {isError ? <Error /> : null}
       {messages && <CommentList />}

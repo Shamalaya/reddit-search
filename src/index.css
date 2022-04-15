@@ -54,3 +54,7 @@ a:active {
 .date {
   font-size: 0.8rem;
 }
+
+h1 {
+  font-weight: 500 !important;
+}

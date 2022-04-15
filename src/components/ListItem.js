@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 function ListItem({ body, subreddit, created_utc, title, permalink, score }) {
   return (
     <ListGroup.Item>
-      <div className="d-flex flex-row">
+      <div className="d-flex flex-row mb-2">
         <a
           href={`https://www.reddit.com/r/${subreddit}`}
           target="_blank"
@@ -38,6 +38,7 @@ function ListItem({ body, subreddit, created_utc, title, permalink, score }) {
           target="_blank"
           rel="noreferrer"
           aria-label="Reddit"
+          className="text-break"
         >
           {title ? title : body}
         </a>
