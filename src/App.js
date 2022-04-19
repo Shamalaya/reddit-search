@@ -13,7 +13,9 @@ function App() {
 
   return (
     <Container>
-      <h1 className="text-center mt-5 mb-5 display-4 ">REDDIT SEARCH</h1>
+      <h1 className="text-center mt-5 mb-5 display-4 fw-bold ">
+        REDDIT SEARCH
+      </h1>
       <SearchForm />
       {isLoading ? (
         <Loading />

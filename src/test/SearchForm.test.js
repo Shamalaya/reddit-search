@@ -4,22 +4,26 @@ import React from "react";
 import userEvent from "@testing-library/user-event";
 
 describe("Search Form", () => {
-  test("Submit blank form fails", async () => {
-    render(<SearchForm />);
-
-    const button = screen.getByRole("button", { name: /search/i });
-
-    userEvent.click(button);
-
-    const errorMessage = await screen.findByText(/Required/i);
-    expect(errorMessage).toBeInTheDocument();
-  });
   test("username with more than 3 characters and less than 20 is ok", async () => {
     render(<SearchForm />);
 
     const button = screen.getByRole("button", { name: /search/i });
     const usernameTextbox = screen.getByRole("textbox", { name: /username/i });
     await userEvent.type(usernameTextbox, "aaaaa", { delay: 1 });
+    userEvent.click(button);
+    const errorMessage = screen.queryByText(
+      /must be between 3 and 20 characters/i
+    );
+    expect(errorMessage).not.toBeInTheDocument();
+  });
+  test("subreddit with more than 3 characters and less than 20 is ok", async () => {
+    render(<SearchForm />);
+
+    const button = screen.getByRole("button", { name: /search/i });
+    const subredditTextbox = screen.getByRole("textbox", {
+      name: /subreddit/i,
+    });
+    await userEvent.type(subredditTextbox, "aaaaa", { delay: 1 });
     userEvent.click(button);
     const errorMessage = screen.queryByText(
       /must be between 3 and 20 characters/i
