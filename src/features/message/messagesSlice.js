@@ -28,6 +28,7 @@ const messagesSlice = createSlice({
   },
   extraReducers: {
     [fetchMessages.pending]: (state) => {
+      state.data = [];
       state.isLoading = true;
     },
     [fetchMessages.fulfilled]: (state, action) => {
