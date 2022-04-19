@@ -14,7 +14,7 @@ const Sort = () => {
       <Form.Select
         name="sort"
         id="sort"
-        className="w-100 p-2"
+        className="form-select-sm"
         value={sort}
         onChange={(e) => dispatch(setSort(e.target.value))}
       >
