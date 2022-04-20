@@ -26,11 +26,7 @@ const SearchForm = () => {
         subreddit: Yup.string()
           .max(20, "Must be between 3 and 20 characters")
           .min(3, "Must be between 3 and 20 characters"),
-      }).test(
-        "at-least-one-property",
-        "you must provide at least one",
-        (value) => !!(value.username || value.subreddit || value.searchTerm)
-      )}
+      })}
       onSubmit={(values, actions) => {
         dispatch(fetchMessages(values));
         actions.setSubmitting(false);
