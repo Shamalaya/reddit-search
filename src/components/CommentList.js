@@ -6,11 +6,11 @@ import Sort from "./Sort";
 import { selectSortedMessages } from "../features/message/messagesSlice";
 function CommentList() {
   const messages = useSelector(selectSortedMessages);
-
+  const messagesCount = messages.length;
   return (
     <>
-      <Sort />
-      <p className="text-center">{messages.length} results </p>
+      {messagesCount ? <Sort /> : null}
+      <p className="text-center mt-5 mb-5">{messagesCount} results </p>
       <ListGroup>
         {messages.map((el) => {
           return <ListItem key={el.id} {...el} />;
