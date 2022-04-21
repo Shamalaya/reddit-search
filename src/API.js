@@ -25,7 +25,6 @@ export const getMessages = ({
       return resp.json();
     })
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };

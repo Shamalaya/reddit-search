@@ -21,8 +21,6 @@ const messagesSlice = createSlice({
   initialState,
   reducers: {
     setSort: (state, action) => {
-      console.log("sto qua");
-      console.log(action);
       state.sort = action.payload;
     },
   },
